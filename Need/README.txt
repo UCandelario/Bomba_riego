@@ -73,3 +73,14 @@ Arduino (Codigo,...)
         }
     }
     
+    JS[Interfaz grafica HTML] = {
+        * Conexion con la Base de datos para poder agregar los datos sin la necesidad del PHP solo js
+        * Poder modificar los datos de la planta
+        * Agregar las rutas para cada una de las paginas y procesamientos
+        * Agregar los procesamientos para cada una de las paginas y que muestre la informacion de ello obtenida de la base de datos 
+
+    }
+
+    CSS[Interfaz grafica HTML] = {
+      * Minimalista y centrado a excepcion de las paginas de informacion   
+    }
