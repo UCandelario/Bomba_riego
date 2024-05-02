@@ -84,3 +84,13 @@ Arduino (Codigo,...)
     CSS[Interfaz grafica HTML] = {
       * Minimalista y centrado a excepcion de las paginas de informacion   
     }
+
+
+-------------------------------------------------------------------
+
+
+-----------
+WIFI      |
+          |  ===> MQTT
+36        |
+-----------
