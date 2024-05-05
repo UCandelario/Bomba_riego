@@ -1,7 +1,7 @@
 let router = require('express').Router();
 
-let clientes =  require('./clientes.js');
-router.use('/clientes',clientes);
+let planta =  require('../planta.js');
+router.use('../planta',planta);
 
 
 module.exports = router;
