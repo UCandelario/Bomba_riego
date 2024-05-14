@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus plantas</title>
+    <!--Imagen de logo-->
+    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
+    <!-- Estilos CSS -->
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="Registro_planta.html">Registro de planta </a></li>
+            <li><a href="Mis_plantas.html">Mis plantas </a></li>
+            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="contenido">
+        <!-- Título de la página -->
+        <h1>Tus Plantas</h1>
+
+        <!-- Tabla para mostrar los datos de la planta -->
+        <table id="tabla-plantas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Propietario</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se agregarán dinámicamente las filas de la tabla -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>Sistema de riego - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- Script para obtener y mostrar los datos de la planta -->
+    <script>
+        // Hacer una solicitud GET a la API para obtener los datos de la planta
+        fetch('http://localhost:3000/api', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Función para generar la tabla con los datos de la planta
+            const generarTabla = (plantas) => {
+                const tabla = document.getElementById('tabla-plantas'); // Corregir aquí
+                const tbody = tabla.getElementsByTagName('tbody')[0];
+                // Limpiar el contenido actual de la tabla
+                tbody.innerHTML = '';
+                // Iterar sobre cada planta y agregar una fila a la tabla
+                plantas.forEach(planta => {
+                    const fila = document.createElement('tr');
+                    fila.innerHTML = `
+                        <td>${planta.id_planta}</td>
+                        <td>${planta.nombre}</td>
+                        <td>${planta.nombre_del_propietario}</td>
+                        <td>${planta.tipo_de_planta}</td>
+                    `;
+                    tbody.appendChild(fila);
+                });
+            };
+
+            // Llamar a la función para generar la tabla con los datos de la planta
+            generarTabla(data);
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos de la planta:', error);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,25 +1,12 @@
-const express = require("express");
-const appController = require("../controllers/appController");
+const express = require('express');
 const router = express.Router();
+const appController = require('../controllers/appController');
 
-router.get("/", (req, res) => {
-  appController.listar(req, res);
-});
-
-router.get("/:id", (req, res) => {
-  appController.buscar(req, res);
-});
-
-router.post("/", (req, res) => {
-  appController.agregar(req, res);
-});
-
-router.delete("/:id", (req, res) => {
-  appController.eliminar(req, res);
-});
-
-router.put("/:id", (req, res) => {
-  appController.editar(req, res);
-});
+// Definir rutas para la gestión de plantas
+router.get('/', appController.listar);
+router.get('/:id', appController.buscar);
+router.post('/', appController.agregar);
+router.delete('/:id', appController.eliminar);
+router.put('/:id', appController.editar);
 
 module.exports = router;
