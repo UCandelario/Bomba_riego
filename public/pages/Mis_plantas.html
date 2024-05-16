@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +24,11 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Menú de navegación -->
     <nav>
         <ul>
-            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="Inicio.html">Inicio</a></li>
             <li><a href="Registro_planta.html">Registro de planta </a></li>
             <li><a href="Mis_plantas.html">Mis plantas </a></li>
             <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
@@ -50,6 +48,7 @@
                     <th>Nombre</th>
                     <th>Propietario</th>
                     <th>Tipo</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,14 +64,14 @@
     <!-- Script para obtener y mostrar los datos de la planta -->
     <script>
         // Hacer una solicitud GET a la API para obtener los datos de la planta
-        fetch('http://localhost:3000/api', {
+        fetch('http://localhost:3000/api/planta', {
             method: 'GET'
         })
         .then(response => response.json())
         .then(data => {
             // Función para generar la tabla con los datos de la planta
             const generarTabla = (plantas) => {
-                const tabla = document.getElementById('tabla-plantas'); // Corregir aquí
+                const tabla = document.getElementById('tabla-plantas');
                 const tbody = tabla.getElementsByTagName('tbody')[0];
                 // Limpiar el contenido actual de la tabla
                 tbody.innerHTML = '';
@@ -84,6 +83,7 @@
                         <td>${planta.nombre}</td>
                         <td>${planta.nombre_del_propietario}</td>
                         <td>${planta.tipo_de_planta}</td>
+                        <td><a href="Registro_planta.html?id=${planta.id_planta}&accion=actualizar">Editar</a></td>
                     `;
                     tbody.appendChild(fila);
                 });
@@ -97,5 +97,4 @@
         });
     </script>
 </body>
-
 </html>

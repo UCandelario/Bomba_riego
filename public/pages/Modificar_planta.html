@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificacion de la Planta</title>
+    <!--Imagen de logo-->
+    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
+    <!-- Enlace a tu archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="Inicio.html">Inicio</a></li>
+            <li><a href="Registro_planta.html">Registro de planta </a></li>
+            <li><a href="Mis_plantas.html">Mis plantas </a></li>
+            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="contenido">
+        <!-- Título de la página -->
+        <h1>Registro de Planta</h1>
+
+        <form id="formulario_registro" action="/api/planta" method="POST">
+
+            <!-- Campo: Nombre del propietario de la planta -->
+            <label for="nombre_propietario">Nombre del Propietario:</label>
+            <input type="text" id="nombre_propietario" name="nombre_propietario" required>
+
+            <!-- Campo: Nombre de la planta -->
+            <label for="nombre_planta">Nombre de la Planta:</label>
+            <input type="text" id="nombre_planta" name="nombre_planta" required>
+
+            <!-- Campo: Tipo de planta (select) -->
+            <label for="tipo_planta">Tipo de Planta:</label>
+            <select id="tipo_planta" name="tipo_planta" required>
+                <option value="arbol">Árbol</option>
+                <option value="arbusto">Arbusto</option>
+                <option value="hierbas">Hierbas</option>
+                <option value="plantas_suculentas">Plantas Suculentas</option>
+                <option value="plantas_trepadoras">Plantas trepadoras</option>
+                <option value="higuerones">Higuerones</option>
+                <option value="helechos">Helechos</option>
+                <option value="musgos">Musgos</option>
+                <option value="hepáticas">Hepáticas</option>
+                <option value="insectivoras">Insectivotas</option>
+            </select>
+            <!-- Botón para enviar el formulario -->
+            <button id="submit-btn" type="submit">Subir</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Sistema de Riego - Todos los derechos reservados</p>
+    </footer>
+    
+</body>
+
+</html>

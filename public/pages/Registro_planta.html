@@ -15,7 +15,7 @@
     <!-- Menú de navegación -->
     <nav>
         <ul>
-            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="Inicio.html">Inicio</a></li>
             <li><a href="Registro_planta.html">Registro de planta </a></li>
             <li><a href="Mis_plantas.html">Mis plantas </a></li>
             <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
@@ -27,19 +27,19 @@
         <!-- Título de la página -->
         <h1>Registro de Planta</h1>
 
-        <form id="formulario_registro" action="procesar_registro.php" method="POST">
-
+        <form id="formulario_registro">
             <!-- Campo: Nombre del propietario de la planta -->
-            <label for="nombre_propietario">Nombre del Propietario:</label>
-            <input type="text" id="nombre_propietario" name="nombre_propietario" required>
+            <label for="nombre_del_propietario">Nombre del Propietario:</label>
+            <input type="text" id="nombre_del_propietario" name="nombre_del_propietario" required>
+
 
             <!-- Campo: Nombre de la planta -->
-            <label for="nombre_planta">Nombre de la Planta:</label>
-            <input type="text" id="nombre_planta" name="nombre_planta" required>
+            <label for="nombre">Nombre de la Planta:</label>
+            <input type="text" id="nombre" name="nombre" required>
 
             <!-- Campo: Tipo de planta (select) -->
-            <label for="tipo_planta">Tipo de Planta:</label>
-            <select id="tipo_planta" name="tipo_planta" required>
+            <label for="tipo_de_planta">Tipo de Planta:</label>
+            <select id="tipo_de_planta" name="tipo_de_planta" required>
                 <option value="arbol">Árbol</option>
                 <option value="arbusto">Arbusto</option>
                 <option value="hierbas">Hierbas</option>
@@ -51,25 +51,68 @@
                 <option value="hepáticas">Hepáticas</option>
                 <option value="insectivoras">Insectivotas</option>
             </select>
-
             <!-- Botón para enviar el formulario -->
             <button type="submit">Subir</button>
         </form>
-
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formRegistro = document.getElementById('formulario_registro');
+            formRegistro.addEventListener('submit', function (event) {
+                event.preventDefault();
+                
+                // Obtener los valores del formulario
+                const nombrePropietario = document.getElementById('nombre_del_propietario').value;
+                const nombrePlanta = document.getElementById('nombre').value;
+                const tipoPlanta = document.getElementById('tipo_de_planta').value;
+    
+                // Crear objeto con los datos del formulario
+                const formData = {
+                    nombre_del_propietario: nombrePropietario,
+                    nombre: nombrePlanta,
+                    tipo_de_planta: tipoPlanta
+                };
+    
+                // Enviar los datos al servidor
+                fetch('/api/planta', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Manejar la respuesta del servidor
+                    console.log('Respuesta del servidor:', data);
+                    if (data.success) {
+                        alert(data.message);
+                        window.location.href = 'Mis_plantas.html';
+                    } else {
+                        alert('Error al agregar la planta: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al registrar la planta:', error);
+                    alert('Error al registrar la planta. Por favor, intenta nuevamente.');
+                });
+            });
+        });
+    </script>
+    
+
     <div>
-        <p><strong>si no sabes que tipo de planta tienes, haz click en página de información sobre tipo de
+        <p><strong>Si no sabes qué tipo de planta tienes, haz click en página de información sobre tipo de
                 plantas</strong></p>
         <button type="button">Tipo de plantas</button>
     </div>
     <p>Nota: Se podrán editar estos valores después del registro por si hay algún error.</p>
 
-
-
     <footer>
         <p>Sistema de Riego - Todos los derechos reservados</p>
     </footer>
+
 </body>
 
 </html>
