@@ -37,12 +37,13 @@ app.get("/Mis_plantas.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pages", "Mis_plantas.html"));
 });
 
-app.get("/Inicio.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "pages", "Inicio.html"));
+app.get("/Tipo_planta.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "pages", "Tipo_planta.html"));
 });
 
-app.get("/Modificar_planta.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "pages", "Modificar_planta.html"));
+
+app.get("/Inicio.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "pages", "Inicio.html"));
 });
 
 // Agregar la ruta POST para el formulario de registro de planta
@@ -51,11 +52,6 @@ app.post("/api/planta", (req, res) => {
   appController.agregar(req, res);
 });
 
-// Agregar la ruta POST para modificar planta
-app.post("/api/modificar_planta/:id", (req, res) => {
-  const appController = require('./controllers/appController');
-  appController.editar(req, res);
-});
 
 // Configuración del puerto
 const PORT = process.env.PORT || 3000;

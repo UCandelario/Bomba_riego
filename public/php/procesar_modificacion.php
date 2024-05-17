@@ -15,14 +15,20 @@ if (!empty($idPlanta) && !empty($nombrePropietario) && !empty($nombre) && !empty
     $stmt->bind_param("sssi", $nombrePropietario, $nombre, $tipoDePlanta, $idPlanta);
 
     if ($stmt->execute()) {
-        echo 'Los datos de la planta se actualizaron correctamente.';
+        // Redirigir a la página Mis_plantas con un mensaje de éxito
+        header("Location: http://localhost:3000/Mis_plantas.html?mensaje=Actualización realizada correctamente");
+        exit();
     } else {
-        echo 'Error al actualizar los datos de la planta: ' . $stmt->error;
+        // Redirigir a la página Mis_plantas con un mensaje de error
+        header("Location: http://localhost:3000/Mis_plantas.html?mensaje=Error al realizar la actualización");
+        exit();
     }
 
     $stmt->close();
 } else {
-    echo 'Por favor, complete todos los campos del formulario.';
+    // Redirigir a la página Mis_plantas con un mensaje de error
+    header("Location: http://localhost:3000/Mis_plantas.html?mensaje=Por favor, complete todos los campos del formulario");
+    exit();
 }
 
 $conn->close();
