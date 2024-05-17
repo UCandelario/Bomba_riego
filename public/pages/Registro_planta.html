@@ -1,118 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Planta</title>
-    <!--Imagen de logo-->
-    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
-    <!-- Enlace a tu archivo CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/public/images/Logo_2.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
-
 <body>
-    <!-- Menú de navegación -->
     <nav>
         <ul>
-            <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Registro_planta.html">Registro de planta </a></li>
-            <li><a href="Mis_plantas.html">Mis plantas </a></li>
-            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+            <li><a href="/Inicio.html">Inicio</a></li>
+            <li><a href="/Registro_planta.html">Registro de planta</a></li>
+            <li><a href="/Mis_plantas.html">Mis plantas</a></li>
+            <li><a href="/Agenda_riego.html">Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
-
-    <!-- Contenido de la página -->
-    <div class="contenido">
-        <!-- Título de la página -->
-        <h1>Registro de Planta</h1>
-
-        <form id="formulario_registro">
-            <!-- Campo: Nombre del propietario de la planta -->
-            <label for="nombre_del_propietario">Nombre del Propietario:</label>
-            <input type="text" id="nombre_del_propietario" name="nombre_del_propietario" required>
-
-
-            <!-- Campo: Nombre de la planta -->
-            <label for="nombre">Nombre de la Planta:</label>
-            <input type="text" id="nombre" name="nombre" required>
-
-            <!-- Campo: Tipo de planta (select) -->
-            <label for="tipo_de_planta">Tipo de Planta:</label>
-            <select id="tipo_de_planta" name="tipo_de_planta" required>
-                <option value="arbol">Árbol</option>
-                <option value="arbusto">Arbusto</option>
-                <option value="hierbas">Hierbas</option>
-                <option value="plantas_suculentas">Plantas Suculentas</option>
-                <option value="plantas_trepadoras">Plantas trepadoras</option>
-                <option value="higuerones">Higuerones</option>
-                <option value="helechos">Helechos</option>
-                <option value="musgos">Musgos</option>
-                <option value="hepáticas">Hepáticas</option>
-                <option value="insectivoras">Insectivotas</option>
-            </select>
-            <!-- Botón para enviar el formulario -->
-            <button type="submit">Subir</button>
-        </form>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const formRegistro = document.getElementById('formulario_registro');
-            formRegistro.addEventListener('submit', function (event) {
-                event.preventDefault();
-                
-                // Obtener los valores del formulario
-                const nombrePropietario = document.getElementById('nombre_del_propietario').value;
-                const nombrePlanta = document.getElementById('nombre').value;
-                const tipoPlanta = document.getElementById('tipo_de_planta').value;
-    
-                // Crear objeto con los datos del formulario
-                const formData = {
-                    nombre_del_propietario: nombrePropietario,
-                    nombre: nombrePlanta,
-                    tipo_de_planta: tipoPlanta
-                };
-    
-                // Enviar los datos al servidor
-                fetch('/api/planta', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Manejar la respuesta del servidor
-                    console.log('Respuesta del servidor:', data);
-                    if (data.success) {
-                        alert(data.message);
-                        window.location.href = 'Mis_plantas.html';
-                    } else {
-                        alert('Error al agregar la planta: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al registrar la planta:', error);
-                    alert('Error al registrar la planta. Por favor, intenta nuevamente.');
-                });
-            });
-        });
-    </script>
-    
-
     <div>
-        <p><strong>Si no sabes qué tipo de planta tienes, haz click en página de información sobre tipo de
-                plantas</strong></p>
-        <button type="button">Tipo de plantas</button>
+        <p><strong>Si no sabes qué tipo de planta tienes, haz click en página de información sobre tipo de plantas</strong></p>
+        <a href="/Tipo_De_planta.html">Tipo de plantas</a>
     </div>
     <p>Nota: Se podrán editar estos valores después del registro por si hay algún error.</p>
+    
+    <form action="http://localhost/Bomba_Riego/public/php/procesar_registro.php" method="POST">
+        <label for="nombre_del_propietario">Nombre del Propietario:</label><br>
+        <input type="text" id="nombre_del_propietario" name="nombre_del_propietario" required><br><br>
+
+        <label for="nombre">Nombre de la Planta:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="tipo_de_planta">Tipo de Planta:</label><br>
+        <select id="tipo_de_planta" name="tipo_de_planta" required>
+            <option value="arbol">Árbol</option>
+            <option value="arbusto">Arbusto</option>
+            <option value="hierbas">Hierbas</option>
+            <option value="plantas_suculentas">Plantas Suculentas</option>
+            <option value="plantas_trepadoras">Plantas trepadoras</option>
+            <option value="higuerones">Higuerones</option>
+            <option value="helechos">Helechos</option>
+            <option value="musgos">Musgos</option>
+            <option value="hepáticas">Hepáticas</option>
+            <option value="insectivoras">Insectívoras</option>
+        </select><br><br>
+
+        <input type="submit" value="Registrar Planta">
+    </form>
 
     <footer>
         <p>Sistema de Riego - Todos los derechos reservados</p>
     </footer>
-
 </body>
-
 </html>

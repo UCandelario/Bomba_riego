@@ -1,14 +1,19 @@
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
+
+// Configurar body-parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Importar y utilizar las rutas
 const router = require('./routes');
 app.use('/api', router);
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Nuevo middleware para analizar datos de formulario
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // Ruta para servir archivos estáticos
@@ -16,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuración de middleware y rutas
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "pages", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "pages", "Inicio.html"));
 });
 
 // Rutas para las páginas adicionales
@@ -34,6 +39,22 @@ app.get("/Mis_plantas.html", (req, res) => {
 
 app.get("/Inicio.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pages", "Inicio.html"));
+});
+
+app.get("/Modificar_planta.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "pages", "Modificar_planta.html"));
+});
+
+// Agregar la ruta POST para el formulario de registro de planta
+app.post("/api/planta", (req, res) => {
+  const appController = require('./controllers/appController');
+  appController.agregar(req, res);
+});
+
+// Agregar la ruta POST para modificar planta
+app.post("/api/modificar_planta/:id", (req, res) => {
+  const appController = require('./controllers/appController');
+  appController.editar(req, res);
 });
 
 // Configuración del puerto

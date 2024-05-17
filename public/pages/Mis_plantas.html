@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,9 @@
     <!--Imagen de logo-->
     <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
     <!-- Estilos CSS -->
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Menú de navegación -->
     <nav>
@@ -67,34 +54,40 @@
         fetch('http://localhost:3000/api/planta', {
             method: 'GET'
         })
-        .then(response => response.json())
-        .then(data => {
-            // Función para generar la tabla con los datos de la planta
-            const generarTabla = (plantas) => {
-                const tabla = document.getElementById('tabla-plantas');
-                const tbody = tabla.getElementsByTagName('tbody')[0];
-                // Limpiar el contenido actual de la tabla
-                tbody.innerHTML = '';
-                // Iterar sobre cada planta y agregar una fila a la tabla
-                plantas.forEach(planta => {
-                    const fila = document.createElement('tr');
-                    fila.innerHTML = `
+            .then(response => response.json())
+            .then(data => {
+                // Función para generar la tabla con los datos de la planta
+                const generarTabla = (plantas) => {
+                    const tabla = document.getElementById('tabla-plantas');
+                    const tbody = tabla.getElementsByTagName('tbody')[0];
+                    // Limpiar el contenido actual de la tabla
+                    tbody.innerHTML = '';
+                    // Iterar sobre cada planta y agregar una fila a la tabla
+                    plantas.forEach(planta => {
+                        const fila = document.createElement('tr');
+                        fila.innerHTML = `
                         <td>${planta.id_planta}</td>
                         <td>${planta.nombre}</td>
                         <td>${planta.nombre_del_propietario}</td>
                         <td>${planta.tipo_de_planta}</td>
-                        <td><a href="Registro_planta.html?id=${planta.id_planta}&accion=actualizar">Editar</a></td>
+                        <td><button onclick="editarPlanta(${planta.id_planta})">Editar</button></td>
                     `;
-                    tbody.appendChild(fila);
-                });
-            };
+                        tbody.appendChild(fila);
+                    });
+                };
 
-            // Llamar a la función para generar la tabla con los datos de la planta
-            generarTabla(data);
-        })
-        .catch(error => {
-            console.error('Error al obtener los datos de la planta:', error);
-        });
+                // Llamar a la función para generar la tabla con los datos de la planta
+                generarTabla(data);
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos de la planta:', error);
+            });
+
+        // Función para redirigir a la página de modificación de planta con el ID de la planta
+        function editarPlanta(id_planta) {
+            window.location.href = 'http://localhost/Bomba_Riego/public/php/Modificar_planta.php?id=' + id_planta;
+        }
     </script>
 </body>
+
 </html>
