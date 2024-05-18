@@ -11,15 +11,24 @@ module.exports = {
 
     eliminar: (req, res) => {
         const { id } = req.params;
-        mysql.query('DELETE FROM planta WHERE id_planta = ?', id, (err, result) => {
+    
+        // Eliminar las entradas correspondientes en la tabla horario_riego antes de eliminar la planta
+        mysql.query('DELETE FROM horario_riego WHERE fk_planta = ?', id, (err, result) => {
             if (err) {
-                res.json({ success: false, message: "Error al eliminar la planta", err });
+                res.json({ success: false, message: "Error al eliminar las entradas en horario_riego", err });
             } else {
-                if (result.affectedRows === 0) {
-                    res.json({ success: false, message: "Planta no encontrada" });
-                } else {
-                    res.json({ success: true, message: "Planta eliminada exitosamente" });
-                }
+                // Ahora que se han eliminado las entradas en horario_riego, proceder con la eliminación de la planta
+                mysql.query('DELETE FROM planta WHERE id_planta = ?', id, (err, result) => {
+                    if (err) {
+                        res.json({ success: false, message: "Error al eliminar la planta", err });
+                    } else {
+                        if (result.affectedRows === 0) {
+                            res.json({ success: false, message: "Planta no encontrada" });
+                        } else {
+                            res.json({ success: true, message: "Planta eliminada exitosamente" });
+                        }
+                    }
+                });
             }
         });
     },
