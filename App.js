@@ -37,8 +37,8 @@ app.get("/Mis_plantas.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pages", "Mis_plantas.html"));
 });
 
-app.get("/Tipo_planta.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "pages", "Tipo_planta.html"));
+app.get("/Tipo_De_planta.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "pages", "Tipo_De_planta.html"));
 });
 
 

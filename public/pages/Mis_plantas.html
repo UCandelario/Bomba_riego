@@ -27,15 +27,20 @@
         <!-- Título de la página -->
         <h1>Tus Plantas</h1>
 
+        <!-- Barra de búsqueda -->
+        <input type="text" id="barra-busqueda" placeholder="Buscar por nombre, propietario o tipo" onkeyup="filtrarPlantas()">
+
         <!-- Tabla para mostrar los datos de la planta -->
         <table id="tabla-plantas">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Propietario</th>
                     <th>Tipo</th>
-                    <th>Acción</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,42 +55,79 @@
 
     <!-- Script para obtener y mostrar los datos de la planta -->
     <script>
+        let plantas = [];
+
         // Hacer una solicitud GET a la API para obtener los datos de la planta
         fetch('http://localhost:3000/api/planta', {
             method: 'GET'
         })
             .then(response => response.json())
             .then(data => {
-                // Función para generar la tabla con los datos de la planta
-                const generarTabla = (plantas) => {
-                    const tabla = document.getElementById('tabla-plantas');
-                    const tbody = tabla.getElementsByTagName('tbody')[0];
-                    // Limpiar el contenido actual de la tabla
-                    tbody.innerHTML = '';
-                    // Iterar sobre cada planta y agregar una fila a la tabla
-                    plantas.forEach(planta => {
-                        const fila = document.createElement('tr');
-                        fila.innerHTML = `
-                        <td>${planta.id_planta}</td>
-                        <td>${planta.nombre}</td>
-                        <td>${planta.nombre_del_propietario}</td>
-                        <td>${planta.tipo_de_planta}</td>
-                        <td><button onclick="editarPlanta(${planta.id_planta})">Editar</button></td>
-                    `;
-                        tbody.appendChild(fila);
-                    });
-                };
-
-                // Llamar a la función para generar la tabla con los datos de la planta
-                generarTabla(data);
+                plantas = data;
+                generarTabla(plantas);
             })
             .catch(error => {
                 console.error('Error al obtener los datos de la planta:', error);
             });
 
+        // Función para generar la tabla con los datos de la planta
+        const generarTabla = (plantas) => {
+            const tabla = document.getElementById('tabla-plantas');
+            const tbody = tabla.getElementsByTagName('tbody')[0];
+            // Limpiar el contenido actual de la tabla
+            tbody.innerHTML = '';
+            // Iterar sobre cada planta y agregar una fila a la tabla
+            plantas.forEach(planta => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${planta.id_planta}</td>
+                    <td><img src="/Images/planta_ejemplo.jpg" alt="Imagen de planta" width="100" height="100"></td>
+                    <td>${planta.nombre}</td>
+                    <td>${planta.nombre_del_propietario}</td>
+                    <td>${planta.tipo_de_planta}</td>
+                    <td><button onclick="editarPlanta(${planta.id_planta})">Editar</button></td>
+                    <td><button onclick="eliminarPlanta(${planta.id_planta})">Eliminar</button></td>
+                `;
+                tbody.appendChild(fila);
+            });
+        };
+
         // Función para redirigir a la página de modificación de planta con el ID de la planta
         function editarPlanta(id_planta) {
             window.location.href = 'http://localhost/Bomba_Riego/public/php/Modificar_planta.php?id=' + id_planta;
+        }
+
+        // Función para eliminar una planta
+        function eliminarPlanta(id_planta) {
+            if (confirm('¿Estás seguro de que deseas eliminar esta planta?')) {
+                fetch('http://localhost:3000/api/planta/' + id_planta, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Planta eliminada correctamente.');
+                        location.reload();
+                    } else {
+                        alert('Error al eliminar la planta.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al eliminar la planta:', error);
+                    alert('Error al eliminar la planta.');
+                });
+            }
+        }
+
+        // Función para filtrar las plantas
+        function filtrarPlantas() {
+            const busqueda = document.getElementById('barra-busqueda').value.toLowerCase();
+            const plantasFiltradas = plantas.filter(planta => 
+                planta.nombre.toLowerCase().includes(busqueda) ||
+                planta.nombre_del_propietario.toLowerCase().includes(busqueda) ||
+                planta.tipo_de_planta.toLowerCase().includes(busqueda)
+            );
+            generarTabla(plantasFiltradas);
         }
     </script>
 </body>
