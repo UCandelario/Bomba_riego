@@ -1,26 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--Imagen de logo-->
-    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
+    <title>Agenda de riego de mis plantas</title>
+    <!-- Enlace a Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Menú de navegación -->
     <nav>
         <ul>
             <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Registro_planta.html">Registro de planta </a></li>
-            <li><a href="Mis_plantas.html">Mis plantas </a></li>
-            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+            <li><a href="Registro_planta.html">Registro de planta</a></li>
+            <li><a href="Mis_plantas.html">Mis plantas</a></li>
+            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
 
+    <!-- Contenido de la página -->
+    <div class="contenido">
+        <!-- Título de la página -->
+        <h1>Agenda de riego de mis plantas</h1>
+        <!-- Div para la gráfica de Plotly -->
+        <div id="grafica-riego"></div>
+    </div>
 
     <footer>
         <p>Sistema de riego - Todos los derechos reservados</p>
     </footer>
+
+    <!-- Script para obtener y mostrar los datos de riego -->
+    <script>
+        // Hacer una solicitud GET para obtener los datos de riego desde el servidor PHP
+        fetch('http://localhost/Bomba_Riego/public/php/obtener_horario_riego.php?id=1')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Datos recibidos:', data); // Verificar los datos recibidos
+                
+                // Procesar los datos para Plotly.js
+                const fechas = data.map(entry => entry.fecha_riego + ' ' + entry.hora_riego);
+                const plantas = data.map(entry => entry.fk_planta);
+                
+                console.log('Fechas:', fechas); // Verificar las fechas
+                console.log('Plantas:', plantas); // Verificar los identificadores de las plantas
+                
+                // Crear un array de objetos para Plotly.js
+                const trace = {
+                    x: fechas,
+                    y: plantas,
+                    text: plantas.map(p => `Planta ${p}`),
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker: { size: 10 }
+                };
+                
+                // Configurar el layout de la gráfica
+                const layout = {
+                    title: 'Agenda de riego de las plantas',
+                    xaxis: { title: 'Fecha y hora de riego' },
+                    yaxis: { title: 'ID de Planta' }
+                };
+                
+                // Crear la gráfica utilizando Plotly.js
+                Plotly.newPlot('grafica-riego', [trace], layout);
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos de riego:', error);
+            });
+    </script>
 </body>
 </html>
