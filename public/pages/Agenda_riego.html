@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de riego de mis plantas</title>
-    <!-- Enlace a Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- amCharts -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <style>
+        #chartdiv1, #chartdiv2 {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 <body>
     <!-- Menú de navegación -->
@@ -24,8 +33,9 @@
     <div class="contenido">
         <!-- Título de la página -->
         <h1>Agenda de riego de mis plantas</h1>
-        <!-- Div para la gráfica de Plotly -->
-        <div id="grafica-riego"></div>
+        <!-- Divs para las gráficas de amCharts -->
+        <div id="chartdiv1"></div>
+        <div id="chartdiv2"></div>
     </div>
 
     <footer>
@@ -34,38 +44,180 @@
 
     <!-- Script para obtener y mostrar los datos de riego -->
     <script>
-        // Hacer una solicitud GET para obtener los datos de riego desde el servidor PHP
+        // Función para crear la gráfica de humedad
+        function crearGraficaHumedad(data) {
+            am5.ready(function() {
+                var root1 = am5.Root.new("chartdiv1");
+                root1.setThemes([am5themes_Animated.new(root1)]);
+
+                var chart1 = root1.container.children.push(am5xy.XYChart.new(root1, {
+                    panX: true,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    paddingLeft: 0
+                }));
+
+                var cursor1 = chart1.set("cursor", am5xy.XYCursor.new(root1, {
+                    behavior: "zoomX"
+                }));
+                cursor1.lineY.set("visible", false);
+
+                var xAxis1 = chart1.xAxes.push(am5xy.DateAxis.new(root1, {
+                    maxDeviation: 0,
+                    baseInterval: {
+                        timeUnit: "minute",
+                        count: 1
+                    },
+                    renderer: am5xy.AxisRendererX.new(root1, {
+                        minorGridEnabled: true,
+                        minGridDistance: 50,
+                        minorLabelsEnabled: true
+                    }),
+                    tooltip: am5.Tooltip.new(root1, {})
+                }));
+
+                var yAxis1 = chart1.yAxes.push(am5xy.ValueAxis.new(root1, {
+                    renderer: am5xy.AxisRendererY.new(root1, {}),
+                    min: 0,
+                    max: 100
+                }));
+
+                var series1 = chart1.series.push(am5xy.LineSeries.new(root1, {
+                    name: "Humedad",
+                    xAxis: xAxis1,
+                    yAxis: yAxis1,
+                    valueYField: "humedad",
+                    valueXField: "fechaHora",
+                    tooltip: am5.Tooltip.new(root1, {
+                        labelText: "{valueY}"
+                    }),
+                    connect: true
+                }));
+
+                series1.bullets.push(function() {
+                    var bulletCircle = am5.Circle.new(root1, {
+                        radius: 5,
+                        fill: series1.get("fill")
+                    });
+                    return am5.Bullet.new(root1, {
+                        sprite: bulletCircle
+                    })
+                });
+
+                chart1.set("scrollbarX", am5.Scrollbar.new(root1, {
+                    orientation: "horizontal"
+                }));
+
+                var humidityData = data.map(entry => {
+                    return {
+                        fechaHora: new Date(entry.fecha + ' ' + entry.hora).getTime(),
+                        humedad: entry.humedad
+                    };
+                });
+
+                series1.data.setAll(humidityData);
+
+                series1.appear(1000);
+                chart1.appear(1000, 100);
+            });
+        }
+
+        // Función para crear la gráfica de horario de riego
+        function crearGraficaRiego(data) {
+            am5.ready(function() {
+                var root2 = am5.Root.new("chartdiv2");
+                root2.setThemes([am5themes_Animated.new(root2)]);
+
+                var chart2 = root2.container.children.push(am5xy.XYChart.new(root2, {
+                    panX: true,
+                    panY: false,
+                    wheelX: "panX",
+                    wheelY: "zoomX",
+                    paddingLeft: 0
+                }));
+
+                var cursor2 = chart2.set("cursor", am5xy.XYCursor.new(root2, {
+                    behavior: "zoomX"
+                }));
+                cursor2.lineY.set("visible", false);
+
+                var xAxis2 = chart2.xAxes.push(am5xy.DateAxis.new(root2, {
+                    maxDeviation: 0,
+                    baseInterval: {
+                        timeUnit: "minute",
+                        count: 1
+                    },
+                    renderer: am5xy.AxisRendererX.new(root2, {
+                        minorGridEnabled: true,
+                        minGridDistance: 50,
+                        minorLabelsEnabled: true
+                    }),
+                    tooltip: am5.Tooltip.new(root2, {})
+                }));
+
+                var yAxis2 = chart2.yAxes.push(am5xy.ValueAxis.new(root2, {
+                    renderer: am5xy.AxisRendererY.new(root2, {}),
+                    min: 0,
+                    max: 10
+                }));
+
+                var series2 = chart2.series.push(am5xy.LineSeries.new(root2, {
+                    name: "Riego",
+                    xAxis: xAxis2,
+                    yAxis: yAxis2,
+                    valueYField: "planta",
+                    valueXField: "fechaHora",
+                    tooltip: am5.Tooltip.new(root2, {
+                        labelText: "{valueY}"
+                    }),
+                    connect: true
+                }));
+
+                series2.bullets.push(function() {
+                    var bulletCircle = am5.Circle.new(root2, {
+                        radius: 5,
+                        fill: series2.get("fill")
+                    });
+                    return am5.Bullet.new(root2, {
+                        sprite: bulletCircle
+                    })
+                });
+
+                chart2.set("scrollbarX", am5.Scrollbar.new(root2, {
+                    orientation: "horizontal"
+                }));
+
+                var wateringData = data.map(entry => {
+                    return {
+                        fechaHora: new Date(entry.fecha_riego + ' ' + entry.hora_riego).getTime(),
+                        planta: entry.fk_planta
+                    };
+                });
+
+                series2.data.setAll(wateringData);
+
+                series2.appear(1000);
+                chart2.appear(1000, 100);
+            });
+        }
+
+        // Obtener y mostrar datos de humedad
+        fetch('http://localhost/Bomba_Riego/public/php/obtener_datos_humedad.php')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Datos de humedad recibidos:', data);
+                crearGraficaHumedad(data);
+            })
+            .catch(error => {
+                console.error('Error al obtener los datos de humedad:', error);
+            });
+        // Obtener y mostrar datos de riego
         fetch('http://localhost/Bomba_Riego/public/php/obtener_horario_riego.php?id=1')
             .then(response => response.json())
             .then(data => {
-                console.log('Datos recibidos:', data); // Verificar los datos recibidos
-                
-                // Procesar los datos para Plotly.js
-                const fechas = data.map(entry => entry.fecha_riego + ' ' + entry.hora_riego);
-                const plantas = data.map(entry => entry.fk_planta);
-                
-                console.log('Fechas:', fechas); // Verificar las fechas
-                console.log('Plantas:', plantas); // Verificar los identificadores de las plantas
-                
-                // Crear un array de objetos para Plotly.js
-                const trace = {
-                    x: fechas,
-                    y: plantas,
-                    text: plantas.map(p => `Planta ${p}`),
-                    type: 'scatter',
-                    mode: 'markers',
-                    marker: { size: 10 }
-                };
-                
-                // Configurar el layout de la gráfica
-                const layout = {
-                    title: 'Agenda de riego de las plantas',
-                    xaxis: { title: 'Fecha y hora de riego' },
-                    yaxis: { title: 'ID de Planta' }
-                };
-                
-                // Crear la gráfica utilizando Plotly.js
-                Plotly.newPlot('grafica-riego', [trace], layout);
+                console.log('Datos de riego recibidos:', data);
+                crearGraficaRiego(data);
             })
             .catch(error => {
                 console.error('Error al obtener los datos de riego:', error);
@@ -73,3 +225,6 @@
     </script>
 </body>
 </html>
+
+
+           

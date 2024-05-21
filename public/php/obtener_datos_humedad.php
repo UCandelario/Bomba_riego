@@ -17,8 +17,8 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Eliminar el filtro por ID de planta
-$sql = "SELECT fk_planta, fecha_riego, hora_riego FROM horario_riego WHERE fk_planta = 1";
+// Consultar los datos de humedad
+$sql = "SELECT fecha, hora, humedad FROM datos_humedad WHERE fk_planta = 1";
 $result = $conn->query($sql);
 
 $datos = array();
