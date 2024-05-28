@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Planta</title>
-    <link rel="icon" href="/public/images/Logo_2.jpeg" type="image/jpeg">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" href="http://localhost:3000/Images/Logo_2.jpeg" type="image/jpeg">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:3000/css/modif_planta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="http://localhost:3000/Inicio.html">Inicio</a></li>
-            <li><a href="http://localhost:3000/Registro_planta.html">Registro de planta</a></li>
-            <li><a href="http://localhost:3000/Mis_plantas.html">Mis plantas</a></li>
-            <li><a href="http://localhost:3000/Agenda_riego.html">Agenda de riego de mis plantas</a></li>
+<nav class="navbar" style="background-color: #e3f2fd;">
+        <img src="http://localhost:3000/Images/Logo.jpeg" alt="Logo" style="height: 90px">
+        <a class="navbar-brand" href="Inicio.html"></a>
+    
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a class="nav-link" href="http://localhost:3000/Inicio.html"> <i class="fas fa-leaf"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://localhost:3000/Tipo_de_planta.html"> <i class="fas fa-leaf"></i> Tipos de plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://localhost:3000/Registro_planta.html"> <i class="fas fa-leaf"></i> Registro de planta</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://localhost:3000/mis_plantas.html"> <i class="fas fa-leaf"></i> Mis plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="http://localhost:3000/Agenda_riego.html"> <i class="fas fa-leaf"></i> Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
 
+    <div class="img_planti">
+            <img src="https://i.pinimg.com/originals/c0/5a/4c/c05a4c88320d01df93c049368d2c4c5a.gif" alt="planti">
+        </div>
+
     <div class="contenido">
         <h1>Modificar Planta</h1>
+
+
         <?php
         // Obtener el id de la planta del query string
         $idPlanta = isset($_GET['id']) ? $_GET['id'] : '';
@@ -55,7 +72,7 @@
                     }
                 }
                 echo '</select><br><br>';
-                echo '<input type="submit" value="Guardar Cambios">';
+                echo '<input type="submit" class="btn btn-outline-success" value="Guardar Cambios">';
                 echo '</form>';
             } else {
                 echo '<p>No se encontraron datos de la planta.</p>';
@@ -66,6 +83,10 @@
             echo '<p>No se proporcionó un ID de planta válido en el query string.</p>';
         }
         ?>
+    </div>
+
+    <div class="finito">
+        <img src="https://i.pinimg.com/originals/18/f7/6e/18f76ecb111c75b4c4a40106a2985745.gif" alt="pixel_plant">
     </div>
 
     <footer>

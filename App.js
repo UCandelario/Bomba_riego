@@ -19,6 +19,8 @@ app.use(cors());
 // Ruta para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/css', express.static(path.join(__dirname, 'css')));
+
 // Configuración de middleware y rutas
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pages", "Inicio.html"));

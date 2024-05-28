@@ -1,0 +1,136 @@
+
+header{
+    text-align: justify;
+    margin: 40px;
+    
+  }
+  
+  section{
+    margin: 40px;
+    text-align: justify;
+  }
+  
+  body{
+    background-color: whitesmoke;
+  }
+
+
+  nav{
+    margin-top:  50px;
+  }
+
+
+
+nav ul {
+  list-style-type: none; /* Quita los puntos de la lista */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Aplica un modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  font-size: 17px;
+
+}
+
+nav ul li {
+  margin-right: 20px; /* Espacio entre elementos*/
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+
+
+#mis_plantas_title{
+    font-size: 60px;
+    text-align: center;
+    margin: 40px;
+    font-family:serif;
+    text-shadow: 4px 4px 4px rgba(69, 64, 64, 0.505);
+    -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.753); /* Borde de 1 píxel de grosor, color negro */
+    font-weight: 1000;
+    background-image: url(https://64.media.tumblr.com/25fc3c0a1a5ef932e80c6955700c11ba/tumblr_ns6m4zzl4I1tcmwrwo1_r1_540.gifv);
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 5px;
+    text-align: center;
+    display: flex; /* Para usar flexbox */
+    align-items: center; /* Para centrar verticalmente el contenido */
+    justify-content: center; /* Para alinear el contenido a la izquierda */
+    padding: 0.1px; /* Espaciado interior */
+    height: 40px;
+  }
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  th {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+  input[type="text"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 45%;
+    margin-right: 30px;
+    margin: 40px;
+  }
+  img {
+    width: 50px;
+    height: auto;
+  }
+  button {
+    padding: 5px 10px;
+    margin: 2px;
+  }  
+
+
+  .contenido {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+  }
+  
+  .flex-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+  }
+  
+  #Registro_planta {
+    margin: 0 10px; /* Espacio entre el texto y los GIFs */
+    text-align: center; /* Centra el texto */
+  }
+  
+  .gif_container {
+    width: 12%; /* Ajusta el tamaño del contenedor del GIF según sea necesario */
+    height: auto;
+  }
+  
+  .right-gif {
+    margin-left: 12px; /* Espacio entre el GIF derecho y el texto */
+  }
+  
+  .gif_container img {
+    width: 100%; /* Asegura que el GIF se ajuste al contenedor */
+    height: auto;
+  }
+  

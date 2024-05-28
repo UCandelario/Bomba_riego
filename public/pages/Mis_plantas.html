@@ -8,24 +8,38 @@
     <!--Imagen de logo-->
     <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/mis_planta.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
     <!-- Menú de navegación -->
-    <nav>
-        <ul>
-            <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Registro_planta.html">Registro de planta </a></li>
-            <li><a href="Mis_plantas.html">Mis plantas </a></li>
-            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <img src="/Images/Logo.jpeg" alt="Logo" style="height: 90px; width: 90px;">
+        <a class="navbar-brand" href="Inicio.html"></a>
+    
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a class="nav-link" href="Inicio.html"> <i class="fas fa-leaf"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="Tipo_de_planta.html"> <i class="fas fa-leaf"></i> Tipos de plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Registro_planta.html"> <i class="fas fa-leaf"></i> Registro de planta</a></li>
+            <li class="nav-item"><a class="nav-link" href="mis_plantas.html"> <i class="fas fa-leaf"></i> Mis plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Agenda_riego.html"> <i class="fas fa-leaf"></i> Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
 
-    <!-- Contenido de la página -->
+
     <div class="contenido">
-        <!-- Título de la página -->
-        <h1>Tus Plantas</h1>
+        <h1 id="mis_plantas_title">Mis plantas</h1>
+            <div class="gif_container" class="flex-contenedor">
+                <img src="https://3.bp.blogspot.com/-eOvwPTJ21Dw/WL8o4SJM-VI/AAAAAAAALO0/bNUtdtmEOWQfdF6xgFhTRAfXBaBSsyRywCLcB/s1600/gif%2Bplantas%2B2.gif" alt="regando plantita">
+            </div>
+    </div>
+
+    <br>
 
         <!-- Barra de búsqueda -->
         <input type="text" id="barra-busqueda" placeholder="Buscar por nombre, propietario o tipo" onkeyup="filtrarPlantas()">

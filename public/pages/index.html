@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de riego</title>
-    <!--Imagen de logo-->
     <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
-    <!--Enlace para hoja de estilo css-->
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
-    <div> <!--Imagen de logotipo-->
-        <img src="/Images/Logo.jpeg" width="200px"  alt="Imagen de logo">
+    <div>
+        <img src="/Images/Logo.jpeg" width="200px" alt="Imagen de logo">
     </div>
-    <nav> <!--menu para navegacion, en los li estaran los enlaces a dicho menu-->
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="/Registro_planta.html">Registro de planta </a></li>
-            <li><a href="/Mis_plantas.html">Mis plantas </a></li>
-            <li><a href="/Agenda_riego.html">Agenda de riego de mis plantas </a></li>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <img src="/Images/Logo.jpeg" alt="Logo" style="height: 90px">
+        <a class="navbar-brand" href="Inicio.html"></a>
+    
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a class="nav-link" href="Inicio.html"> <i class="fas fa-leaf"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="Tipo_de_planta.html"> <i class="fas fa-leaf"></i> Tipos de plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Registro_planta.html"> <i class="fas fa-leaf"></i> Registro de planta</a></li>
+            <li class="nav-item"><a class="nav-link" href="mis_plantas.html"> <i class="fas fa-leaf"></i> Mis plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Agenda_riego.html"> <i class="fas fa-leaf"></i> Agenda de riego de mis plantas</a></li>
         </ul>
-    </nav>
-    <div class="contenido_inicio">
-        <h1> Bienvenido a tu sistema de riego</h1>
-        <p>Aqui encontraras informacion de como utilizar esta pagina</p>
-        <h2>Que es esta pagina?</h2>
-        <div>
-            <p>Aqui encontraras las diferentes funcionalidades de la pagina y como utilizar tu sistema de riego</p>
-            <img src="/Images/Image_ejemplo.avif" alt="Imagen de ejemplo"> <!--IMAGEN-->
+    </nav>    <header>
+        <div class="title_container">
+            <h1 id="plantalia_titulo">PLANTALIA</h1>
         </div>
-        <h2>Como usarla?</h2>
-        <div>
-            <p>Como usarla...</p>
-            <img src="/Images/Image_ejemplo.avif" alt="Imagen de ejemplo"> <!--IMAGEN-->
+    </header>
+    <div class="contenido_inicio">
+        <h1>Bienvenido a tu sistema de riego</h1>
+        <p>Aquí encontrarás información de cómo utilizar esta página</p>
+        <h2>¿Qué es esta página?</h2>
+        <div id="img_inicio">
+            <p>Aquí encontrarás las diferentes funcionalidades de la página y cómo utilizar tu sistema de riego</p>
+            <img src="/Images/Image_ejemplo.avif" alt="Imagen de ejemplo">
+        </div>
+        <h2>¿Cómo usarla?</h2>
+        <div id="img_inicio">
+            <p>Para los amantes de las plantas que no tengan el tiempo o que olviden regarlas, aquí podrás hacerlo de forma manual o automática, y podrás ver tus plantas y registrarlas.</p>
+            <img src="/Images/Image_ejemplo.avif" alt="Imagen de ejemplo">
         </div>
     </div>
-
-
     <footer>
         <p>Sistema de riego - Todos los derechos reservados</p>
     </footer>
 </body>
-
 </html>

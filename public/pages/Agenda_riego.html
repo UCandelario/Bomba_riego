@@ -5,43 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de riego de mis plantas</title>
     <!-- Estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/agenda.css">
+    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
+
     <!-- amCharts -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         #chartdiv1, #chartdiv2 {
             width: 100%;
             height: 500px;
-            margin-bottom: 50px;
+            margin-bottom: 50px;        
         }
     </style>
 </head>
 <body>
     <!-- Menú de navegación -->
-    <nav>
-        <ul>
-            <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Registro_planta.html">Registro de planta</a></li>
-            <li><a href="Mis_plantas.html">Mis plantas</a></li>
-            <li><a href="Agenda_riego.html">Agenda de riego de mis plantas</a></li>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <img src="/Images/Logo.jpeg" alt="Logo" style="height: 90px">
+        <a class="navbar-brand" href="Inicio.html"></a>
+    
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a class="nav-link" href="Inicio.html"> <i class="fas fa-leaf"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="Tipo_de_planta.html"> <i class="fas fa-leaf"></i> Tipos de plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Registro_planta.html"> <i class="fas fa-leaf"></i> Registro de planta</a></li>
+            <li class="nav-item"><a class="nav-link" href="mis_plantas.html"> <i class="fas fa-leaf"></i> Mis plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Agenda_riego.html"> <i class="fas fa-leaf"></i> Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
+    <br>
 
     <!-- Contenido de la página -->
-    <div class="contenido">
+    <div class="contenido_agenda">
         <!-- Título de la página -->
         <h1>Agenda de riego de mis plantas</h1>
+
+        <div class="gif-plantin">
+            <img src="https://media.tenor.com/34RGu0piVaAAAAAi/a-pinch-grows-a-pinch-plant.gif" alt="plantin">
+        </div>
+
+        <div class="gif_container left-gif">
+            <img src="https://cdn.dribbble.com/users/2985218/screenshots/11007223/media/8aa92a8c7b96f2ddeef9e824b9349837.gif" alt="list-left">
+        </div>
+        <br>
+        <br>
         <!-- Divs para las gráficas de amCharts -->
         <div id="chartdiv1"></div>
         <div id="chartdiv2"></div>
     </div>
 
     <footer>
-        <p>Sistema de riego - Todos los derechos reservados</p>
-    </footer>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <p>Sistema de Riego - Todos los derechos reservados</p> <i class="fas fa-leaf"></i>
 
+    </footer>
     <!-- Script para obtener y mostrar los datos de riego -->
     <script>
         // Función para crear la gráfica de humedad

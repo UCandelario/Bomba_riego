@@ -1,11 +1,275 @@
-/*  footer */
+/* Parte del index.html o inicio */
+.contenido_inicio {
+  text-align: justify;
+  margin: 40px;
+  font-family: serif;
+  font-size: 16px;
+
+
+}
+
+h1 {
+  font-family: serif;
+  font-size: 50px !important;
+  font-weight: bold !important;
+  font-stretch: expanded; /* Intenta expandir el ancho de la fuente */
+  text-align: center;
+  color: rgba(18, 146, 18, 0.842);
+  padding-bottom: 100px;
+  -webkit-text-stroke: 1px rgba(71, 67, 67, 0.692);
+  text-shadow: 4px 4px 4px rgba(69, 64, 64, 0.505);
+
+
+}   
+
+.info {
+  margin: 40px;
+  font-size: 20px;
+  overflow: hidden; /* Asegura que el contenedor encierre los elementos flotantes */
+}
+
+/*inicio imagenes de info*/
+.left-img {
+  float: left;
+  width: 30%;
+  height: auto;
+  margin-right: 10px; /* Espacio entre el texto y la imagen de la izquierda */
+}
+
+.right-img {
+  float: right;
+  width: 10%;
+  height: auto;
+  margin-left: 10px; /* Espacio entre el texto y la imagen de la derecha */
+/*fin de imagen de info*/
+
+}.contenido_pag{
+  text-align: justify;
+  margin: 40px;
+  font-size: 20px;
+
+}
+
+.animate__animated.animate__backInLeft {
+  --animate-duration: 2s;
+}
+
+
+/*a ver si jala esta madre*/
+.logo-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
+}
+
+
+
+/* Parte del inicio tipo de planta */
+header {
+  text-align: justify;
+  margin: 40px;
+}
+
+section {
+  margin: 40px;
+  text-align: justify;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+#plantalia_titulo {
+  font-size: 60px;
+  text-align: center;
+  font-family: serif;
+  font-weight: 900;
+  margin-top: 2%;
+  color: rgb(244, 190, 74);
+  background-color: rgba(249, 166, 12, 0.584);
+  font-style: italic;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.824);
+  background-image: url('../images/plantalia2.jpeg');
+  background-size: 87% auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  padding: 100px 70px 70px;
+  padding-bottom: 100px;
+  -webkit-text-stroke: 1.2px rgba(0, 0, 0, 0.724);
+}
+
+br {
+  line-height: 8;
+}
+
+.img_header img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+#Registro_planta {
+  text-align: left;
+  padding: 10px;
+}
+
+/* Footer */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f0f0f0;
-    padding: 10px;
-    text-align: center;
-  }
-  
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1px;
+  height: 40px;
+}
+/*Fin del Footer*/
+
+nav {
+  margin-top: 50px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+
+
+/* Imágenes */
+/* Alineación de las imágenes de tipo de planta */
+.contenedor_flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.texto_izquierda {
+  flex-grow: 1;
+  text-align: justify;
+  margin-left: 20px;
+}
+
+.imagen_derecha img {
+  width: 250px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 4px 4px 4px rgba(59, 56, 56, 0.463);
+}
+
+.imagen_derecha {
+  margin-left: 40px;
+}
+
+/*fin imagenes*/
+
+/*imagenes de INICIO*/
+#img_inicio {
+  text-align: left; /* Centra el texto horizontalmente */
+  margin-top: 20px; /* Añade margen superior si es necesario */
+}
+
+#imagen_ejemplo {
+  width: 150px; /* Ajusta el ancho */
+  height: auto; /* Mantiene la proporción */
+  display: block; /* Hace que la imagen sea un elemento de bloque */
+  margin: 0 auto; /* Centra la imagen */
+  margin-right: 300px;
+
+}
+
+/*fin imagenes de INICIO*/
+
+
+/* PARTE DE REGISTRO DE PLANTAS */
+
+/* Inicio parte GIF de registro de planta */
+.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+#Registro_planta {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.gif_container {
+  width: 90px;
+  height: auto;
+}
+
+.left-gif {
+  margin-right: 12px;
+}
+
+.right-gif {
+  margin-left: 12px;
+}
+
+.gif_container img {
+  width: 100%;
+  height: auto;
+}
+
+/* Fin parte GIF */
+#Registro_planta {
+  font-size: 65px;
+  font-family: serif;
+  text-align: center;
+  text-shadow: 4px 4px 4px rgba(69, 64, 64, 0.505);
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.724);
+  font-weight: 1000;
+  background-image: url(https://i.gifer.com/embedded/download/PELN.gif);
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+#contenido_registro {
+  text-align: justify;
+  margin: 60px;
+  font-size: 20px;
+}
+
+#contenido_registro_down {
+  text-align: justify;
+  margin: 40px;
+}
+
+#formulario_registro {
+  text-align: justify;
+  margin: 40px;
+}
+
+/* Fin de registro de planta */
+
+

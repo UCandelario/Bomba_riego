@@ -4,50 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Planta</title>
-    <link rel="icon" href="/public/images/Logo_2.jpeg" type="image/jpeg">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="icon" href="/Images/Logo_2.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/Inicio.html">Inicio</a></li>
-            <li><a href="/Registro_planta.html">Registro de planta</a></li>
-            <li><a href="/Mis_plantas.html">Mis plantas</a></li>
-            <li><a href="/Agenda_riego.html">Agenda de riego de mis plantas</a></li>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <img src="/Images/Logo.jpeg" alt="Logo" style="height: 90px">
+        <a class="navbar-brand" href="Inicio.html"></a>
+    
+        <ul class="navbar-nav d-flex flex-row">
+            <li class="nav-item"><a class="nav-link" href="Inicio.html"> <i class="fas fa-leaf"></i> Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="Tipo_de_planta.html"> <i class="fas fa-leaf"></i> Tipos de plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Registro_planta.html"> <i class="fas fa-leaf"></i> Registro de planta</a></li>
+            <li class="nav-item"><a class="nav-link" href="mis_plantas.html"> <i class="fas fa-leaf"></i> Mis plantas</a></li>
+            <li class="nav-item"><a class="nav-link" href="Agenda_riego.html"> <i class="fas fa-leaf"></i> Agenda de riego de mis plantas</a></li>
         </ul>
     </nav>
-    <div>
-        <p><strong>Si no sabes qué tipo de planta tienes, haz click en página de información sobre tipo de plantas</strong></p>
-        <a href="/Tipo_De_planta.html">Tipo de plantas</a>
-    </div>
-    <p>Nota: Se podrán editar estos valores después del registro por si hay algún error.</p>
-    
-    <form action="http://localhost/Bomba_Riego/public/php/procesar_registro.php" method="POST">
-        <label for="nombre_del_propietario">Nombre del Propietario:</label><br>
-        <input type="text" id="nombre_del_propietario" name="nombre_del_propietario" required><br><br>
 
-        <label for="nombre">Nombre de la Planta:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+        <!-- Contenedor para el título y los gifs -->
+        <div class="contenido">
+            <div id="contenido_registro" class="flex-container">
+                <div class="gif_container left_gif">
+                    <img src="https://i.pinimg.com/originals/73/3f/8c/733f8cf10682a8b10249838bbc07abb5.gif" alt="sunflower-left">
+                </div>
+                
+                <h1 id="Registro_planta">Registro de la planta</h1>
+                
+                <div class="gif_container right-gif">
+                    <img src="../images/sunflower-pvz.gif" alt="sunflower-right">
+                </div>
+            </div>
+        </div>
+        
+        <div id="contenido_registro">
+            <form action="http://localhost/Bomba_Riego/public/php/procesar_registro.php" method="POST">
+                <label for="nombre_del_propietario">Nombre del Propietario:</label>
+                <input type="text" id="nombre_del_propietario" name="nombre_del_propietario" required><br><br>
+        
+                <label for="nombre">Nombre de la Planta:</label>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+        
+                <label for="tipo_de_planta">Tipo de Planta:</label>
+                <select id="tipo_de_planta" name="tipo_de_planta" required>
+                    <option value="arbol">Árbol</option>
+                    <option value="arbusto">Arbusto</option>
+                    <option value="hierbas">Hierbas</option>
+                    <option value="plantas_suculentas">Plantas Suculentas</option>
+                    <option value="plantas_trepadoras">Plantas trepadoras</option>
+                    <option value="higuerones">Higuerones</option>
+                    <option value="helechos">Helechos</option>
+                    <option value="musgos">Musgos</option>
+                    <option value="hepáticas">Hepáticas</option>
+                    <option value="insectivoras">Insectívoras</option>
+                </select><br><br>
+        
+                <button type="submit" class="btn btn-outline-secondary">Registrar planta</button>
+            </form>
+        </div>
+        
+    <div id="contenido_registro_down">
+        <p><strong>si no sabes que tipo de planta tienes, haz click en página de información sobre tipo de
+                plantas</strong></p>
+                <a href="Tipo_de_planta.html"> <button type="submit" class="btn btn-outline-success">Tipo de planta</button> </a>
 
-        <label for="tipo_de_planta">Tipo de Planta:</label><br>
-        <select id="tipo_de_planta" name="tipo_de_planta" required>
-            <option value="arbol">Árbol</option>
-            <option value="arbusto">Arbusto</option>
-            <option value="hierbas">Hierbas</option>
-            <option value="plantas_suculentas">Plantas Suculentas</option>
-            <option value="plantas_trepadoras">Plantas trepadoras</option>
-            <option value="higuerones">Higuerones</option>
-            <option value="helechos">Helechos</option>
-            <option value="musgos">Musgos</option>
-            <option value="hepáticas">Hepáticas</option>
-            <option value="insectivoras">Insectívoras</option>
-        </select><br><br>
+                <br>
+    <p><em><strong> Nota:</strong> Se podrán editar estos valores después del registro por si hay algún error.</em></p>
+</div>
 
-        <input type="submit" value="Registrar Planta">
-    </form>
 
     <footer>
-        <p>Sistema de Riego - Todos los derechos reservados</p>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <p>Sistema de Riego - Todos los derechos reservados</p> <i class="fas fa-leaf"></i>
+
     </footer>
 </body>
 </html>

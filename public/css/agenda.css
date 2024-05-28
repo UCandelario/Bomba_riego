@@ -1,0 +1,90 @@
+  .contenido{
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 50px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 17px;
+
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.1px;
+    height: 40px;
+  }
+
+  h1{
+    font-family: serif;
+    font-weight: bold !important;
+    margin-bottom: 0;
+    color: rgba(40, 184, 40, 0.836);
+    padding-bottom: 90px;
+    -webkit-text-stroke: 1px rgba(53, 53, 53, 0.669);
+    text-shadow: 4px 4px 4px rgba(69, 64, 64, 0.505);
+
+  
+  }
+
+  .contenido{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flex-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contenido_agenda {
+    margin: 0 10px;
+    text-align: center;
+  }
+  
+  .gif_container {
+    margin-right: 10px; /* Ajusta el margen según tu preferencia */
+    float: left;
+  }
+  .gif_container img {
+    width: 20%; /* Ajusta el tamaño del GIF según tu preferencia */
+    height: auto; /* Para mantener la proporción */
+    margin-right: 70%;
+    margin-top: -13%;
+  }
+
+  .gif-plantin {
+    margin-right: 10px; /* Ajusta el margen según tu preferencia */
+    float: right;
+  }
+  .gif-plantin img {
+    width: 60%; /* Ajusta el tamaño del GIF según tu preferencia */
+    height: auto; /* Para mantener la proporción */
+    margin-right: 70%;
+    margin-top: -13%;
+  }

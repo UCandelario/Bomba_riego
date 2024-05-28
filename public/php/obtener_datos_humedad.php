@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type'); // Permitir cabeceras espe
 
 $servername = "localhost";
 $username = "root";
-$password = "(Ur$07121998";
+$password = "Nacien1990";
 $dbname = "br_pruebas";
 
 // Crear conexión

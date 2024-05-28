@@ -1,0 +1,86 @@
+nav{
+    margin-top:  50px;
+  }
+
+
+
+nav ul {
+  list-style-type: none; /* Quita los puntos de la lista */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Aplica un modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  font-size: 17px;
+
+}
+
+nav ul li {
+  margin-right: 20px; /* Espacio entre elementos*/
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+h1{
+    text-align: center;
+    font-family: fantasy;
+    margin-bottom: 0;
+    color: rgba(11, 150, 11, 0.724);
+    padding-bottom: 100px;
+    -webkit-text-stroke: 1px rgba(71, 67, 67, 0.692);
+    text-shadow: 4px 4px 4px rgba(69, 64, 64, 0.505);
+
+}
+
+.img_planti {
+    float: auto; /* Alinea el contenedor a la derecha */
+    margin: 40px;
+    margin-left: 30%;
+
+}
+
+.img_planti img {
+    width: 100px; /* Ajusta el tamaño de la imagen según tu preferencia */
+    height: auto; /* Para mantener la proporción */
+    margin-bottom: -15%;
+    
+}
+
+
+.contenido{
+    text-align: justify;
+    margin: 60px;
+    font-size: 20px;
+}
+
+
+.finito {
+    position: fixed; /* Fija la posición del contenedor */
+    bottom: 0; /* Lo coloca en la parte inferior */
+    left: 70%; /* Lo coloca en el extremo izquierdo */
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.finito img {
+    width: 20%; /* Ocupa todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    margin-bottom: 20px;
+}
+
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 5px;
+    text-align: center;
+    display: flex; /* Para usar flexbox */
+    align-items: center; /* Para centrar verticalmente el contenido */
+    justify-content: center; /* Para alinear el contenido a la izquierda */
+    padding: 0.1px; /* Espaciado interior */
+    height: 40px;
+  }
